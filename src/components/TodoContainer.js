@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import TodosList from './TodoList';
 import Header from './Header';
 import InputTodo from './InputTodo';
-/* eslint-disable */ 
+/* eslint-disable */
 class TodoContainer extends Component {
   state = {
     todos: [
@@ -25,38 +25,36 @@ class TodoContainer extends Component {
     ],
   };
 
-  handleChange = id => {
-    this.setState(prevState => ({
-        todos: prevState.todos.map(todo => {
-          if (todo.id === id) {
-            return {
-              ...todo,
-              completed: !todo.completed,
-            }
-          }
-          return todo
-        }),
-      }))
+  handleChange = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
   };
 
-  delTodo = id => {
+  delTodo = (id) => {
     this.setState({
       todos: [
-        ...this.state.todos.filter(todo => {
-          return todo.id !== id;
-        })
-      ]
+        ...this.state.todos.filter((todo) => todo.id !== id),
+      ],
     });
   };
 
-  addTodoItem = title => {
+  addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
-      completed: false
+      title,
+      completed: false,
     };
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      todos: [...this.state.todos, newTodo],
     });
   };
 
